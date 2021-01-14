@@ -22,7 +22,9 @@ class WeatherStation implements Subject {
     this.observers.push(o)
   }
   public removeObserver(o: Observer) {
-    this.observers = this.observers.filter(observer => observer !== o)
+    // this.observers = this.observers.filter(observer => observer !== o)
+    const index = this.observers.indexOf(o)
+    this.observers.splice(index, 1)
   }
   public notifyObservers() {
     this.observers.map(observer => observer.update(this.temperature))
@@ -58,6 +60,3 @@ const fan = new Fan(weatherStation)
 
 weatherStation.setTemperature(20)
 weatherStation.setTemperature(30)
-weatherStation.setTemperature(10)
-weatherStation.setTemperature(50)
-
